@@ -1,6 +1,6 @@
 {
   "name": "skillshare-player-control",
-  "version": "1.0.4",
+  "version": "1.0.5",
   "description": "Basic keyboard controls for Skillshare's player.",
   "repository": "avi12/skillshare-player-control",
   "author": {
@@ -11,6 +11,9 @@
   "homepage": "https://avi12.com",
   "bugs": {
     "email": "avi6106@gmail.com"
+  },
+  "prettier": {
+    "arrowParens": "avoid"
   },
   "scripts": {
     "build": "node build",
