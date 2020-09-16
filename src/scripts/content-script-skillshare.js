@@ -2,7 +2,7 @@
 
 const elVideo = document.documentElement.querySelector("video");
 const elVideoDiv = elVideo.parentElement;
-const elLessons = Array.from(document.querySelectorAll(".session-item"));
+const elLessons = document.getElementsByClassName("session-item");
 
 // Make sure the controls will work as soon as the video is loaded
 elVideoDiv.focus();
@@ -11,7 +11,7 @@ elVideo.addEventListener("canplay", () => {
   elVideo.play();
 });
 
-elVideoDiv.addEventListener("keydown", (e) => {
+elVideoDiv.addEventListener("keydown", e => {
   const { code, key, shiftKey } = e;
   const elVideo = document.querySelector("video");
   const elButtonPlayPause = document.querySelector(".vjs-play-control");
@@ -114,12 +114,14 @@ elVideoDiv.addEventListener("keydown", (e) => {
         // Go to the previous video in the playlist
         if (code === "KeyP") {
           const i = getCurrentLessonIndex();
-          if (i - 1 > 0) {
+          console.log(i);
+          if (i - 1 >= 0) {
             elLessons[i - 1].click();
           }
           // Go to the next video in the playlist
         } else if (code === "KeyN") {
           const i = getCurrentLessonIndex();
+          console.log(i);
           if (i + 1 < elLessons.length) {
             elLessons[i + 1].click();
           }
@@ -151,7 +153,9 @@ document.addEventListener("keydown", ({ code }) => {
 });
 
 function getCurrentLessonIndex() {
-  return elLessons.findIndex(({ classList }) => classList.contains("active"));
+  return [...elLessons].findIndex(elLesson =>
+    elLesson.classList.contains("active")
+  );
 }
 
 function getIsMuted() {
