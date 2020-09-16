@@ -16,7 +16,7 @@ elVideoDiv.addEventListener("keydown", (e) => {
   const elVideo = document.querySelector("video");
   const elButtonPlayPause = document.querySelector(".vjs-play-control");
   const elButtonCC = document.querySelector(".vjs-transcript-mode");
-  const elButtonTheater = document.querySelector(".playlist-arrow-button");
+  const elButtonTheater = document.querySelector(".playlist-close-button");
 
   const secondsToSeek = 5;
   const volumeChangeRate = 5;
@@ -40,7 +40,7 @@ elVideoDiv.addEventListener("keydown", (e) => {
 
     case "KeyF": // Toggle full-screen mode
       {
-        if (!document.webkitIsFullScreen) {
+        if (!getIsFullScreen()) {
           elVideoDiv.requestFullscreen();
         }
       }
@@ -135,9 +135,13 @@ elVideoDiv.addEventListener("keydown", (e) => {
   }
 });
 
+function getIsFullScreen() {
+  return document.webkitIsFullScreen || document.isFullScreen;
+}
+
 // Listen to F while in full-screen mode to exit it
 document.addEventListener("keydown", ({ code }) => {
-  if (document.webkitIsFullScreen) {
+  if (getIsFullScreen()) {
     switch (code) {
       case "KeyF":
         document.exitFullscreen();
