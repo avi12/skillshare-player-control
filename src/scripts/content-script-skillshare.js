@@ -114,14 +114,12 @@ elVideoDiv.addEventListener("keydown", e => {
         // Go to the previous video in the playlist
         if (code === "KeyP") {
           const i = getCurrentLessonIndex();
-          console.log(i);
           if (i - 1 >= 0) {
             elLessons[i - 1].click();
           }
           // Go to the next video in the playlist
         } else if (code === "KeyN") {
           const i = getCurrentLessonIndex();
-          console.log(i);
           if (i + 1 < elLessons.length) {
             elLessons[i + 1].click();
           }
