@@ -2,7 +2,7 @@
   "name": "Skillshare Player Control",
   "description": "Basic keyboard controls for Skillshare's player.",
   "manifest_version": 2,
-  "version": "1.0.3",
+  "version": "1.0.4",
   "author": "avi12",
   "content_scripts": [
     {
