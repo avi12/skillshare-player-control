@@ -1,5 +1,4 @@
 # Yarn and npm
-yarn-error.log
 npm-debug.log
 node_modules
 
@@ -21,5 +20,4 @@ node_modules
 # Distribution
 /dist_packed-edge
 /dist_packed
-/dist-edge
 /dist
