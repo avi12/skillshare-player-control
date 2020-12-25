@@ -1,19 +1,21 @@
 # Skillshare Player Control
 Adds basic keyboard controls to the Skillshare player:
 
-* Left/Right keys - Backward/Forward
-* Up/Down keys - Volume up/down
-* Space - Pause/Play
-* M - Toggle mute
-* T - Toggle Theater Mode
-* Shift + P - Play previous video on playlist
-* Shift + N - Play next video on playlist
-* < - Slow down the video
-* \> - Speed up the video
-* Home/End - Beginning/End of video
-* 0-9 - Set time to (Number + 0) % , e.g. 10%
-* F - Full-screen
-* Double-click video - Full-screen
+| Key | Description
+| ---:|:-----------
+| Left/Right keys | Backward/Forward
+| Up/Down keys | Volume up/down
+| Space | Pause/Play
+| M | Toggle mute
+| T | Toggle Theater Mode
+| Shift + P | Play previous video on playlist
+| Shift + N | Play next video on playlist
+| < | Slow down the video
+| \> | Speed up the video
+| Home/End | Beginning/End of video
+| 0-9 | Set time to (Number + 0) % , e.g. 10%
+| F | Full-screen
+| Double-click video | Full-screen
 
 Available for [Google Chrome](https://chrome.google.com/webstore/detail/agbhgcomfpcfboebbfmefbicfkpnlfeg) and [Mozilla Firefox](https://addons.mozilla.org/en-US/firefox/addon/skillshare-player-control).  
 Made by [avi12](https://avi12.com).
