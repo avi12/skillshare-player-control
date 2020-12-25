@@ -29,7 +29,6 @@
   "scripts": {
     "dev": "rollup -c -w",
     "build": "rollup -c",
-    "pack": "web-ext build --overwrite-dest --artifacts-dir dist_packed --source-dir dist",
     "pack-self": "zip-self -o dist_packed/skillshare-player-control-{version}-source.zip",
     "run-browser": "web-ext run --no-config-discovery --start-url https://www.skillshare.com/classes/Practical-C-Programming-Beginner-Course/919943529 --source-dir dist --verbose --target",
     "run-firefox": "pnpm run-browser firefox-desktop",
