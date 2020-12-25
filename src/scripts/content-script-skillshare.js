@@ -3,6 +3,7 @@
 const elVideo = document.documentElement.querySelector("video");
 const elVideoDiv = elVideo.parentElement;
 const elLessons = document.getElementsByClassName("session-item");
+const elSpeeds = document.querySelectorAll(".playback-speed-popover ul > li");
 
 // Make sure the controls will work as soon as the video is loaded
 elVideoDiv.focus();
@@ -33,8 +34,8 @@ elVideoDiv.addEventListener("keydown", e => {
 
     case "KeyM": // Mute/unmute
       {
-        elVideoDiv.focus();
         elVideo.muted = !getIsMuted();
+        elVideoDiv.focus();
       }
       break;
 
@@ -109,24 +110,34 @@ elVideoDiv.addEventListener("keydown", e => {
       }
       break;
 
-    default: {
-      if (shiftKey) {
-        // Go to the previous video in the playlist
-        if (code === "KeyP") {
-          const i = getCurrentLessonIndex();
-          if (i - 1 >= 0) {
-            elLessons[i - 1].click();
-          }
-          // Go to the next video in the playlist
-        } else if (code === "KeyN") {
-          const i = getCurrentLessonIndex();
-          if (i + 1 < elLessons.length) {
-            elLessons[i + 1].click();
-          }
+    case "Comma": // < - Slow down the video
+    case "Period": // > - Speed up the video
+      {
+        if (!shiftKey) {
+          return;
         }
-        return;
-      }
 
+        const iSpeed = getCurrentIndex(elSpeeds);
+        clickNextItemIfPossible(elSpeeds, iSpeed, code === "Period");
+        elVideoDiv.focus();
+      }
+      break;
+
+    case "KeyP": // Shift + P - Go to the previous video in the playlist
+    case "KeyN": // Shift + N - Go to the next video in the playlist
+      {
+        if (!shiftKey) {
+          return;
+        }
+
+        const iLesson = getCurrentIndex(elLessons);
+        clickNextItemIfPossible(elLessons, iLesson, code === "KeyN");
+        elVideoDiv.focus();
+      }
+      break;
+
+    default: {
+      // Go to (number + 0) % of the video, e.g. 10%
       const isNumber = !isNaN(key);
       if (isNumber) {
         elVideo.currentTime = (elVideo.duration * (key + 0)) / 100;
@@ -134,6 +145,22 @@ elVideoDiv.addEventListener("keydown", e => {
     }
   }
 });
+
+document.addEventListener(
+  "click",
+  e => {
+    // When the user clicks a lesson from a lessons list on the right side,
+    // the video will be focused
+    if (!e.target.closest(".session-item")) {
+      return;
+    }
+
+    requestAnimationFrame(() => {
+      elVideoDiv.focus();
+    });
+  },
+  { capture: true }
+);
 
 function getIsFullScreen() {
   return document.webkitIsFullScreen || document.isFullScreen;
@@ -150,14 +177,32 @@ document.addEventListener("keydown", ({ code }) => {
   }
 });
 
-function getCurrentLessonIndex() {
-  return [...elLessons].findIndex(elLesson =>
-    elLesson.classList.contains("active")
-  );
+/**
+ * @returns {number}
+ */
+function getCurrentIndex(items) {
+  return [...items].findIndex(element => element.classList.contains("active"));
 }
 
+/**
+ * @param {NodeListOf} items
+ * @param {number} i
+ * @param {boolean} isNext
+ */
+function clickNextItemIfPossible(items, i, isNext) {
+  if (!isNext) {
+    if (i > 0) {
+      items[i - 1].click();
+    }
+  } else if (i < items.length) {
+    items[i + 1].click();
+  }
+}
+
+/**
+ * @returns {boolean}
+ */
 function getIsMuted() {
-  const elLevel = document.querySelector(".vjs-volume-level");
-  const level = Number(elLevel.style.width.replace("%", ""));
-  return level === 0;
+  const elButtonMute = document.querySelector(".vjs-mute-control");
+  return elButtonMute.classList.contains("vjs-vol-0");
 }
