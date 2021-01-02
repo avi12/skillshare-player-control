@@ -17,7 +17,7 @@ Adds basic keyboard controls to the Skillshare player:
 | F | Full-screen
 | Double-click video | Full-screen
 
-Available for [Google Chrome](https://chrome.google.com/webstore/detail/agbhgcomfpcfboebbfmefbicfkpnlfeg) and [Mozilla Firefox](https://addons.mozilla.org/en-US/firefox/addon/skillshare-player-control).  
+Available for [Google Chrome](https://chrome.google.com/webstore/detail/agbhgcomfpcfboebbfmefbicfkpnlfeg), [Mozilla Firefox](https://addons.mozilla.org/en-US/firefox/addon/skillshare-player-control), [Microsoft Edge](https://microsoftedge.microsoft.com/addons/detail/ldgdglnmpaghmpoabbfadpnnaobhjffe), and [Opera](https://addons.opera.com/en/extensions/details/skillshare-player-control).  
 Made by [avi12](https://avi12.com).
 
 ## Requirements for setting up
