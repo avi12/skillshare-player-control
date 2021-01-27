@@ -49,10 +49,16 @@ pnpm run-firefox
 1. Enable the developer tools (top-right corner usually).
 1. Either drag-drop the `dist` folder onto the browser or click "Load unpacked extension" and choose it.
 
-## Build & pack
+## Build
 ```shell
 pnpm build
 ```
+
+## Pack
+```shell
+pnpm run pack
+```
+
 ## Pack source code
 ```shell
 pnpm pack-self
