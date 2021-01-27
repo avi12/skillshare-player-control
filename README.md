@@ -64,6 +64,11 @@ pnpm run pack
 pnpm pack-self
 ```
 
+## Shorthand
+```shell
+pnpm build-pack
+```
+
 ## Do you want to contribute?
 Feel free to!  
 If you want to fork, just make sure to credit me and link this repository and [my website](https://avi12.com).
