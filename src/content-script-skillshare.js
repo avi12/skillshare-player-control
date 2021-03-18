@@ -4,6 +4,7 @@ const elVideo = document.documentElement.querySelector("video");
 const elVideoDiv = elVideo.parentElement;
 const elLessons = document.getElementsByClassName("session-item");
 const elSpeeds = document.querySelectorAll(".playback-speed-popover ul > li");
+const elControlBar = document.querySelector(".vjs-control-bar");
 
 // Make sure the controls will work as soon as the video is loaded
 elVideoDiv.focus();
@@ -166,14 +167,19 @@ function getIsFullScreen() {
   return document.webkitIsFullScreen || document.isFullScreen;
 }
 
-// Listen to F while in full-screen mode to exit it
 document.addEventListener("keydown", ({ code }) => {
-  if (getIsFullScreen()) {
-    switch (code) {
-      case "KeyF":
+
+  switch (code) {
+    case "KeyF": // Listen to F while in full-screen mode to exit it
+      if (getIsFullScreen()) {
         document.exitFullscreen();
-        break;
-    }
+      }
+      break;
+    case "KeyH": // Toggle control bar regardless of focus
+      {
+        elControlBar.style.visibility = elControlBar.style.visibility == 'hidden' ? 'visible' : 'hidden';
+      }
+      break;
   }
 });
 
