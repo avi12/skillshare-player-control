@@ -2,7 +2,7 @@
 Adds basic keyboard controls to the Skillshare player:
 
 | Key | Description
-| ---:|:-----------
+| ---:| -----------
 | Left/Right keys | Backward/Forward
 | Up/Down keys | Volume up/down
 | Space | Pause/Play
@@ -16,6 +16,9 @@ Adds basic keyboard controls to the Skillshare player:
 | 0-9 | Set time to (Number + 0) % , e.g. 10%
 | F | Full-screen
 | Double-click video | Full-screen
+
+Additional features:
+1. Auto-hiding the player controls when being idle in full-screen mode.
 
 Available for:
 * [Google Chrome](https://chrome.google.com/webstore/detail/agbhgcomfpcfboebbfmefbicfkpnlfeg) ![Chrome Web Store](https://img.shields.io/chrome-web-store/users/agbhgcomfpcfboebbfmefbicfkpnlfeg?color=white&label=users&style=flat-square)
