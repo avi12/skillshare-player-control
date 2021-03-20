@@ -16,6 +16,4 @@ function createConfig(filename) {
   };
 }
 
-export default [
-  createConfig("content-script-skillshare"),
-];
+export default [createConfig("skillshare-content-script-initialize")];

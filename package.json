@@ -1,6 +1,6 @@
 {
   "name": "skillshare-player-control",
-  "version": "1.1.1",
+  "version": "1.1.1.21",
   "description": "Basic keyboard controls for Skillshare's player.",
   "repository": "avi12/skillshare-player-control",
   "author": {
@@ -13,21 +13,46 @@
     "email": "avi6106@gmail.com"
   },
   "prettier": {
-    "arrowParens": "avoid"
+    "arrowParens": "avoid",
+    "trailingComma": "none"
+  },
+  "eslintConfig": {
+    "parserOptions": {
+      "ecmaVersion": 2021,
+      "sourceType": "module"
+    },
+    "rules": {
+      "quotes": [
+        "warn",
+        "double",
+        {
+          "allowTemplateLiterals": true
+        }
+      ],
+      "semi": "warn",
+      "prefer-const": "warn",
+      "comma-dangle": [
+        "warn",
+        "never"
+      ]
+    }
   },
   "devDependencies": {
+    "eslint": "^7.22.0",
     "prettier": "^2.2.1",
-    "rollup": "^2.38.1",
+    "rollup": "^2.42.0",
     "rollup-plugin-terser": "^7.0.2",
-    "set-json-version": "^1.0.4",
-    "web-ext": "^5.5.0",
-    "zip-self": "^0.2.5"
+    "set-json-version": "^1.0.5",
+    "web-ext": "^6.0.0",
+    "web-ext-deploy": "^0.3.0",
+    "zip-self": "^0.3.1"
   },
   "scripts": {
     "dev": "rollup -c -w",
     "build": "rollup -c",
     "pack": "web-ext build --overwrite-dest --artifacts-dir dist_packed --source-dir dist --filename skillshare-player-control-{version}.zip",
     "pack-self": "zip-self -o dist_packed/skillshare-player-control-{version}-source.zip",
+    "deploy": "web-ext-deploy --env --verbose",
     "build-pack": "pnpm run build && pnpm run pack && pnpm run pack-self",
     "run-browser": "web-ext run --no-config-discovery --start-url https://www.skillshare.com/classes/Practical-C-Programming-Beginner-Course/919943529 --source-dir dist --verbose --target",
     "run-firefox": "pnpm run-browser firefox-desktop",
