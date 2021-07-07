@@ -1,12 +1,18 @@
+/**
+ * @param {HTMLVideoElement} elVideo
+ */
 export function registerHotkeys(elVideo) {
   const elVideoDiv = elVideo.parentElement;
   const elLessons = document.getElementsByClassName("session-item");
   const elSpeeds = document.querySelectorAll(".playback-speed-popover ul > li");
   const elButtonPlayPause = document.querySelector(".vjs-play-control");
+  const elButtonFullscreen = document.querySelector(".vjs-fullscreen-control");
+
   const events = {
     mouseenter: new Event("mouseenter"),
     mouseleave: new Event("mouseleave")
   };
+
   const secondsUntilControlsHide = 5;
 
   // Make sure the controls will work as soon as the video is loaded
@@ -17,9 +23,10 @@ export function registerHotkeys(elVideo) {
   });
 
   addIdleListener();
+  addFullscreenListener();
 
   elVideoDiv.addEventListener("keydown", e => {
-    const { code, key, shiftKey } = e;
+    const { code, key, shiftKey, ctrlKey } = e;
     const elVideo = document.querySelector("video");
     const elButtonCC = document.querySelector(".vjs-transcript-mode");
     const elButtonTheater = document.querySelector(".playlist-close-button");
@@ -38,12 +45,6 @@ export function registerHotkeys(elVideo) {
       case "KeyM": // Mute/unmute
         elVideo.muted = !getIsMuted();
         elVideoDiv.focus();
-        break;
-
-      case "KeyF": // Toggle full-screen mode
-        if (!getIsFullScreen()) {
-          enterFullScreen();
-        }
         break;
 
       case "KeyT": // Toggle theater mode
@@ -122,9 +123,10 @@ export function registerHotkeys(elVideo) {
       default:
         // Go to (number + 0) % of the video, e.g. 10%
         const isNumber = !isNaN(key);
-        if (isNumber) {
-          elVideo.currentTime = (elVideo.duration * (key + 0)) / 100;
+        if (!isNumber || ctrlKey) {
+          return;
         }
+        elVideo.currentTime = (elVideo.duration * (key + 0)) / 100;
     }
   });
 
@@ -144,26 +146,11 @@ export function registerHotkeys(elVideo) {
     { capture: true }
   );
 
-  function enterFullScreen() {
-    elVideoDiv.addEventListener(
-      "fullscreenchange",
-      () => {
-        setTimeout(hidePlayerControls, secondsUntilControlsHide * 1000);
-      },
-      {
-        capture: true,
-        once: true
-      }
-    );
-
-    elVideoDiv.requestFullscreen();
-  }
-
   function addIdleListener() {
     let timeoutMouseMove;
     let timeoutPlayPause;
 
-    elVideoDiv.addEventListener("mousemove", () => {
+    const onMouseMoveOrSeeked = () => {
       if (!getIsFullScreen()) {
         return;
       }
@@ -171,29 +158,59 @@ export function registerHotkeys(elVideo) {
       showPlayerControls();
       clearTimeout(timeoutMouseMove);
       timeoutMouseMove = setTimeout(() => {
+        elVideo = document.querySelector("video");
         if (!elVideo.paused) {
           hidePlayerControls();
         }
       }, secondsUntilControlsHide * 1000);
-    });
+    };
+    elVideoDiv.addEventListener("mousemove", onMouseMoveOrSeeked);
 
-    elVideo.addEventListener("play", () => {
-      if (!getIsFullScreen()) {
-        return;
-      }
+    const prepareToHideControls = () => {
       timeoutPlayPause = setTimeout(() => {
         if (!elVideo.paused) {
           hidePlayerControls();
         }
       }, secondsUntilControlsHide * 1000);
-    });
+    };
 
-    elVideo.addEventListener("pause", () => {
-      if (!getIsFullScreen()) {
-        return;
-      }
+    const prepareToShowControls = () => {
       clearTimeout(timeoutPlayPause);
       showPlayerControls();
+    };
+
+    const onCanPlay = ({ target }) => target.play();
+
+    const toggleVideoListeners = (elVideo, isAdd) => {
+      if (isAdd) {
+        elVideo.addEventListener("canplay", onCanPlay);
+        elVideo.addEventListener("play", prepareToHideControls);
+        elVideo.addEventListener("pause", prepareToShowControls);
+        elVideo.addEventListener("seeked", onMouseMoveOrSeeked);
+        elVideoDiv.addEventListener("fullscreenchange", prepareToHideControls);
+      } else {
+        elVideo.removeEventListener("canplay", onCanPlay);
+        elVideo.removeEventListener("play", prepareToHideControls);
+        elVideo.removeEventListener("pause", prepareToShowControls);
+        elVideo.removeEventListener("seeked", onMouseMoveOrSeeked);
+        elVideoDiv.removeEventListener(
+          "fullscreenchange",
+          prepareToHideControls
+        );
+      }
+    };
+
+    // If another video in the playlist was clicked
+    new MutationObserver(() => {
+      const elVideo = document.querySelector("video");
+      toggleVideoListeners(elVideo, false);
+      toggleVideoListeners(elVideo, true);
+    }).observe(elVideoDiv, { childList: true });
+  }
+
+  function addFullscreenListener() {
+    elButtonFullscreen.addEventListener("click", () => {
+      elVideoDiv.focus();
     });
   }
 
@@ -211,17 +228,6 @@ export function registerHotkeys(elVideo) {
   function getIsFullScreen() {
     return Boolean(document.webkitIsFullScreen || document.isFullScreen);
   }
-
-  // Listen to F while in full-screen mode to exit it
-  document.addEventListener("keydown", ({ code }) => {
-    if (getIsFullScreen()) {
-      switch (code) {
-        case "KeyF":
-          document.exitFullscreen();
-          break;
-      }
-    }
-  });
 
   /**
    * @returns {number}
