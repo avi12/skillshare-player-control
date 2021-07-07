@@ -1,5 +1,28 @@
 body {
-  font-size: 16px;
-  width: 430px;
+  font-size: 1rem;
   font-family: Arial, sans-serif;
+  padding: 0 10px;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 2fr;
+  gap: 0.35em 0;
+}
+
+.grid > div {
+  display: flex;
+  align-items: center;
+}
+
+.grid > div:not(:nth-last-child(-n + 2)) {
+  padding-bottom: 0.2em;
+  border-bottom: 1px solid;
+}
+
+@media (prefers-color-scheme: dark) {
+  body {
+    color: white;
+    background: black;
+  }
 }
