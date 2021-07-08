@@ -2,7 +2,7 @@
   "name": "Skillshare Player Control",
   "description": "Basic keyboard controls for Skillshare's player.",
   "manifest_version": 2,
-  "version": "1.2.2",
+  "version": "1.2.3",
   "author": "avi12",
   "content_scripts": [
     {
@@ -26,7 +26,6 @@
     "128": "images/icon-128.png"
   },
   "options_ui": {
-    "chrome_style": true,
     "page": "options/options.html"
   },
   "applications": {
