@@ -1,17 +1,17 @@
 {
   "name": "Skillshare Player Control",
   "description": "Basic keyboard controls for Skillshare's player.",
-  "manifest_version": 2,
-  "version": "1.2.3",
+  "manifest_version": 3,
+  "version": "1.3.0",
   "author": "avi12",
+  "developer": {
+    "name": "avi12",
+    "url": "https://avi12.com/skillshare-player-control"
+  },
   "content_scripts": [
     {
-      "matches": [
-        "https://www.skillshare.com/classes/*"
-      ],
-      "js": [
-        "build/skillshare-content-script-initialize.js"
-      ]
+      "matches": ["https://www.skillshare.com/classes/*"],
+      "js": ["build/scripts/skillshare-content-script-initialize.js"]
     }
   ],
   "icons": {
@@ -26,7 +26,7 @@
     "128": "images/icon-128.png"
   },
   "options_ui": {
-    "page": "options/options.html"
+    "page": "build/options/options.html"
   },
   "applications": {
     "gecko": {

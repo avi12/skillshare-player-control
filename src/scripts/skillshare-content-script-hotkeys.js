@@ -193,10 +193,7 @@ export function registerHotkeys(elVideo) {
         elVideo.removeEventListener("play", prepareToHideControls);
         elVideo.removeEventListener("pause", prepareToShowControls);
         elVideo.removeEventListener("seeked", onMouseMoveOrSeeked);
-        elVideoDiv.removeEventListener(
-          "fullscreenchange",
-          prepareToHideControls
-        );
+        elVideoDiv.removeEventListener("fullscreenchange", prepareToHideControls);
       }
     };
 
@@ -230,12 +227,15 @@ export function registerHotkeys(elVideo) {
   }
 
   /**
+   * @param {HTMLCollectionOf<Element>} items
    * @returns {number}
    */
   function getCurrentIndex(items) {
-    return [...items].findIndex(element =>
-      element.classList.contains("active")
-    );
+    for (let i = 0; i < items.length; i++) {
+      if (items[i].classList.contains("active")) {
+        return i;
+      }
+    }
   }
 
   /**
