@@ -6,10 +6,12 @@ specifiers:
   adm-zip: ^0.5.9
   build-for-browser: github:avi12/build-for-browser
   eslint: ^8.3.0
+  eslint-config-prettier: ^8.3.0
   rollup: ^2.60.2
   rollup-plugin-terser: ^7.0.2
   set-json-version: ^1.0.7
   web-ext: ^6.6.0
+  webext-store-incompat-fixer: ^0.1.37
   yargs: ^17.2.1
   zip-self: ^0.4.3
 
@@ -19,10 +21,12 @@ devDependencies:
   adm-zip: 0.5.9
   build-for-browser: github.com/avi12/build-for-browser/7a2e113575e2431efcf438851d134a453f4b7eca
   eslint: 8.3.0
+  eslint-config-prettier: 8.3.0_eslint@8.3.0
   rollup: 2.60.2
   rollup-plugin-terser: 7.0.2_rollup@2.60.2
   set-json-version: 1.0.7
   web-ext: 6.6.0
+  webext-store-incompat-fixer: 0.1.37
   yargs: 17.2.1
   zip-self: 0.4.3
 
@@ -1050,6 +1054,15 @@ packages:
   /escape-string-regexp/4.0.0:
     resolution: {integrity: sha512-TtpcNJ3XAzx3Gq8sWRzJaVajRs0uVxA2YAkdb1jm2YkPz4G6egUFAyA3n5vtEIZefPk5Wa4UXbKuS5fKkJWdgA==}
     engines: {node: '>=10'}
+    dev: true
+
+  /eslint-config-prettier/8.3.0_eslint@8.3.0:
+    resolution: {integrity: sha512-BgZuLUSeKzvlL/VUjx/Yb787VQ26RU3gGjA3iiFvdsp/2bMfVIWUVP7tjxtjS0e+HP409cPlPvNkQloz8C91ew==}
+    hasBin: true
+    peerDependencies:
+      eslint: '>=7.0.0'
+    dependencies:
+      eslint: 8.3.0
     dev: true
 
   /eslint-plugin-no-unsanitized/4.0.0_eslint@8.3.0:
@@ -3276,6 +3289,14 @@ packages:
       - safe-compare
       - supports-color
       - utf-8-validate
+    dev: true
+
+  /webext-store-incompat-fixer/0.1.37:
+    resolution: {integrity: sha512-8+g1XJJ+CaiCWb/xQoDxS/WygJwsCNrqtJQFxbK77CyfBy3LtVGda8ZO2heoDKYU3oXrFAmTvKOBn+ZwX00aJw==}
+    engines: {node: '>=8.0.0'}
+    hasBin: true
+    dependencies:
+      jszip: 3.7.1
     dev: true
 
   /when/3.7.7:

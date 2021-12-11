@@ -2,12 +2,27 @@
   "name": "skillshare-player-control",
   "version": "1.3.0",
   "description": "Basic keyboard controls for Skillshare's player.",
-  "license": "GPL-3.0-or-later",
   "repository": "https://github.com/avi12/skillshare-player-control",
+  "license": "GPL-3.0-or-later",
   "author": "avi12 <avi6106@gmail.com>",
   "homepage": "https://avi12.com",
   "bugs": {
     "email": "avi6106@gmail.com"
+  },
+  "scripts": {
+    "dev": "rollup -c -w",
+    "build": "rollup -c",
+    "pack": "web-ext build --overwrite-dest --artifacts-dir dist_packed --source-dir dist --filename skillshare-player-control-{version}.zip",
+    "pack-self": "zip-self -o dist_packed/skillshare-player-control-{version}-source.zip",
+    "build-pack": "pnpm run build && pnpm run pack && pnpm run webext-incompat-fix && pnpm run pack-self",
+    "build-for-firefox": "build-for-browser --i dist_packed/skillshare-player-control-{version}.zip --browser=firefox",
+    "build-for-opera": "build-for-browser --i dist_packed/skillshare-player-control-{version}.zip --browser=opera",
+    "webext-incompat-fix": "webext-store-incompat-fixer -i dist_packed/skillshare-player-control-{version}.zip -s chrome,edge,firefox,opera",
+    "set-version": "set-json-version -f package.json dist/manifest.json dist/manifest.json -v",
+    "run-browser": "web-ext run --no-config-discovery --start-url https://www.skillshare.com/classes/Practical-C-Programming-Beginner-Course/919943529 --source-dir dist --verbose --target",
+    "run-firefox": "pnpm run-browser firefox-desktop",
+    "run-chromium": "pnpm run-browser chromium",
+    "run-edge-windows": "\"\"%ProgramFiles(x86)%\\Microsoft\\Edge\\Application\\msedge.exe\"\" https://www.skillshare.com/classes/Practical-C-Programming-Beginner-Course/919943529 --load-extension=%cd%\\dist"
   },
   "devDependencies": {
     "@types/chrome": "^0.0.164",
@@ -15,26 +30,13 @@
     "adm-zip": "^0.5.9",
     "build-for-browser": "github:avi12/build-for-browser",
     "eslint": "^8.3.0",
+    "eslint-config-prettier": "^8.3.0",
     "rollup": "^2.60.2",
     "rollup-plugin-terser": "^7.0.2",
     "set-json-version": "^1.0.7",
     "web-ext": "^6.6.0",
+    "webext-store-incompat-fixer": "^0.1.37",
     "yargs": "^17.2.1",
     "zip-self": "^0.4.3"
-  },
-  "scripts": {
-    "dev": "rollup -c -w",
-    "build": "rollup -c",
-    "pack": "web-ext build --overwrite-dest --artifacts-dir dist_packed --source-dir dist --filename skillshare-player-control-{version}.zip",
-    "build-for-firefox": "build-for-browser --i dist_packed/skillshare-player-control-{version}.zip --browser=firefox",
-    "build-for-opera": "build-for-browser --i dist_packed/skillshare-player-control-{version}.zip --browser=opera",
-    "pack-self": "zip-self -o dist_packed/skillshare-player-control-{version}-source.zip",
-    "deploy": "web-ext-deploy --env --verbose",
-    "build-pack": "pnpm run build && pnpm run pack && pnpm run pack-self",
-    "set-version": "set-json-version -f package.json dist/manifest.json dist/manifest.json -v",
-    "run-browser": "web-ext run --no-config-discovery --start-url https://www.skillshare.com/classes/Practical-C-Programming-Beginner-Course/919943529 --source-dir dist --verbose --target",
-    "run-firefox": "pnpm run-browser firefox-desktop",
-    "run-chromium": "pnpm run-browser chromium",
-    "run-edge-windows": "\"\"%ProgramFiles(x86)%\\Microsoft\\Edge\\Application\\msedge.exe\"\" https://www.skillshare.com/classes/Practical-C-Programming-Beginner-Course/919943529 --load-extension=%cd%\\dist"
   }
 }
