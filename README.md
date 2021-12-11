@@ -67,7 +67,7 @@ pnpm run-edge-windows
 
 1. Build the extension for Firefox/Opera (see below).
 2. Open the extensions page in that browser.
-3. Enable the developer tools (top-right corner usually).
+3. Enable the developer mode (top-right corner usually).
 4. Either drag-drop the browser-compatible ZIP onto the browser or click "Load unpacked extension" and choose it.
 
 ## Build & pack
