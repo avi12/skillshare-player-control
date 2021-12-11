@@ -28,7 +28,7 @@
   "options_ui": {
     "page": "build/options/options.html"
   },
-  "applications": {
+  "browser_specific_settings": {
     "gecko": {
       "id": "Skillshare_player_controller@gmail.com"
     }
