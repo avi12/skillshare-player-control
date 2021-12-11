@@ -37,47 +37,38 @@ Install [Node.js](https://nodejs.org) and [PNPM](https://pnpm.js.org/en/installa
 
 ## Install dependencies
 
-```shell
+```shell script
 pnpm i
 ```
 
 ## Start Rollup for development
 
-```shell
+```shell script
 pnpm dev
 ```
 
 ## Running
 
-### Chrome/Chromium
+### Note that to fully test all the features, you need a [Skillshare subscription](https://www.skillshare.com/membership/checkout).
 
-```shell
+### Chromium/Chrome
+
+```shell script
 pnpm run-chromium
 ```
 
-### Firefox
+### Edge on Windows 10/11
 
 ```shell
-pnpm run-firefox
+pnpm run-edge-windows
 ```
 
-### Other browsers
+### Browsers that don't support Manifest v3
 
-1. Open the extensions page in your browser.
-1. Enable the developer tools (top-right corner usually).
-1. Either drag-drop the `dist` folder onto the browser or click "Load unpacked extension" and choose it.
-
-## Build
-
-```shell
-pnpm build
-```
-
-## Pack
-
-```shell
-pnpm run pack
-```
+1. Build the extension for Firefox/Opera (see below).
+2. Open the extensions page in that browser.
+3. Enable the developer tools (top-right corner usually).
+4. Either drag-drop the browser-compatible ZIP onto the browser or click "Load unpacked extension" and choose it.
 
 ## Build & pack
 
@@ -99,5 +90,4 @@ pnpm build-for-opera
 
 ## Do you want to contribute?
 
-Feel free to!  
-If you want to fork, just make sure to credit me and link [this repository](https://github.com/avi12/skillshare-player-control) and [my website](https://avi12.com).
+Feel free to! Make sure to comply with the license, [GPL v3](https://github.com/avi12/skillshare-player-control/blob/main/LICENSE).
