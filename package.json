@@ -25,17 +25,18 @@
     "run-edge-windows": "\"\"%ProgramFiles(x86)%\\Microsoft\\Edge\\Application\\msedge.exe\"\" https://www.skillshare.com/classes/Practical-C-Programming-Beginner-Course/919943529 --load-extension=%cd%\\dist"
   },
   "devDependencies": {
-    "@types/chrome": "^0.0.181",
-    "@web/rollup-plugin-html": "^1.10.2",
+    "@types/chrome": "^0.0.186",
+    "@web/rollup-plugin-html": "^1.10.3",
     "build-for-browser": "github:avi12/build-for-browser",
-    "eslint": "^8.13.0",
+    "eslint": "^8.15.0",
     "eslint-config-prettier": "^8.5.0",
+    "minimist": "^1.2.6",
     "prettier": "^2.6.2",
-    "rollup": "^2.70.1",
+    "rollup": "^2.73.0",
     "rollup-plugin-terser": "^7.0.2",
     "set-json-version": "^1.0.7",
     "web-ext": "^6.8.0",
     "webext-store-incompat-fixer": "^0.1.40",
-    "zip-self": "^0.4.6"
+    "zip-self": "^0.4.7"
   }
 }
