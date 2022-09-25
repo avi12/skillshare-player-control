@@ -83,7 +83,7 @@ pnpm build-pack
 ### Build & pack for Firefox
 
 ```shell
-pnpm build:firefox && pnpm pack:firefox
+pnpm build-pack:firefox
 ```
 
 ## Do you want to contribute?
