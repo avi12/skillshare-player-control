@@ -1,8 +1,8 @@
 {
-  "name": "skillshare-player-control-plasmo",
+  "name": "skillshare-player-control",
   "displayName": "Skillshare Player Control",
   "version": "2.0.0",
-  "description": "Basic keyboard shortcuts for Skillshare's player.",
+  "description": "Basic keyboard controls for Skillshare's player.",
   "author": "avi12",
   "scripts": {
     "dev": "plasmo dev",
