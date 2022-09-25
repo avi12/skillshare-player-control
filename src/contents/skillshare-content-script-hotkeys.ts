@@ -1,12 +1,9 @@
-/**
- * @param {HTMLVideoElement} elVideo
- */
-export function registerHotkeys(elVideo) {
+export function registerHotkeys(elVideo: HTMLVideoElement): void {
   const elVideoDiv = elVideo.parentElement;
-  const elLessons = document.getElementsByClassName("session-item");
-  const elSpeeds = document.querySelectorAll(".playback-speed-popover ul > li");
-  const elButtonPlayPause = document.querySelector(".vjs-play-control");
-  const elButtonFullscreen = document.querySelector(".vjs-fullscreen-control");
+  const elLessons = [...document.querySelectorAll(".session-item")] as HTMLElement[];
+  const elSpeeds = [...document.querySelectorAll(".playback-speed-popover ul > li")] as HTMLElement[];
+  const elButtonPlayPause = document.querySelector<HTMLButtonElement>(".vjs-play-control");
+  const elButtonFullscreen = document.querySelector<HTMLButtonElement>(".vjs-fullscreen-control");
 
   const events = {
     mouseenter: new Event("mouseenter"),
@@ -17,27 +14,59 @@ export function registerHotkeys(elVideo) {
 
   // Make sure the controls will work as soon as the video is loaded
   elVideoDiv.focus();
-  elVideo.addEventListener("canplay", () => {
+  elVideo.addEventListener("canplay", async () => {
     elVideoDiv.focus();
-    elVideo.play();
+    await elVideo.play();
   });
 
   addIdleListener();
   addFullscreenListener();
 
-  elVideoDiv.addEventListener("keydown", e => {
+  elVideoDiv.addEventListener("keydown", (e: KeyboardEvent) => {
     const { code, key, shiftKey, ctrlKey } = e;
-    const elVideo = document.querySelector("video");
-    const elButtonCC = document.querySelector(".vjs-transcript-mode");
-    const elButtonTheater = document.querySelector(".playlist-close-button");
+    const elVideo = document.querySelector<HTMLVideoElement>("video");
+    const elButtonTheater = document.querySelector<HTMLButtonElement>(".playlist-close-button");
 
     const secondsToSeek = 5;
     const volumeChangeRate = 5;
 
     switch (code) {
       case "KeyC": // Toggle closed captions
-        if (elButtonCC) {
-          elButtonCC.click();
+        {
+          const elButtonCC = document.querySelector<HTMLButtonElement>(".vjs-transcript-mode");
+          if (!elButtonCC) {
+            return;
+          }
+
+          const getActiveCc = (): HTMLLIElement => {
+            const selectorSelectedLiCc = ".list-item.selected";
+            try {
+              return document.querySelector(`${selectorSelectedLiCc}:has([data-language-id])`);
+            } catch {
+              for (const elLiSelected of document.querySelectorAll(selectorSelectedLiCc)) {
+                if (elLiSelected.querySelector("[data-language-id]")) {
+                  return elLiSelected as HTMLLIElement;
+                }
+              }
+            }
+          };
+
+          const elCcItemActive = getActiveCc();
+
+          const getCcOption = (languageId: string): HTMLAnchorElement =>
+            document.querySelector(`[data-language-id*="${languageId}"], [data-language-id="en-US"]`);
+
+          const languageIdOff = "__language_id_off__";
+          const languageIdCurrent = location.pathname.split("/")[0];
+
+          const elCcOptionOff = getCcOption(languageIdOff);
+          const elCcOptionCurrent = getCcOption(languageIdCurrent);
+
+          if (!elCcItemActive || elCcItemActive.querySelector("[data-language-id]") === elCcOptionOff) {
+            elCcOptionCurrent.click();
+          } else {
+            elCcOptionOff.click();
+          }
           elVideoDiv.focus();
         }
         break;
@@ -105,7 +134,11 @@ export function registerHotkeys(elVideo) {
         }
 
         const iSpeed = getCurrentIndex(elSpeeds);
-        clickNextItemIfPossible(elSpeeds, iSpeed, code === "Period");
+        clickNextItemIfPossible({
+          items: elSpeeds,
+          i: iSpeed,
+          isNext: code === "Period"
+        });
         elVideoDiv.focus();
         break;
 
@@ -116,41 +149,45 @@ export function registerHotkeys(elVideo) {
         }
 
         const iLesson = getCurrentIndex(elLessons);
-        clickNextItemIfPossible(elLessons, iLesson, code === "KeyN");
+        clickNextItemIfPossible({
+          items: elLessons,
+          i: iLesson,
+          isNext: code === "KeyN"
+        });
         elVideoDiv.focus();
         break;
 
       default:
         // Go to (number + 0) % of the video, e.g. 10%
-        const isNumber = !isNaN(key);
-        if (!isNumber || ctrlKey) {
+        if (isNaN(+key) || ctrlKey) {
           return;
         }
-        elVideo.currentTime = (elVideo.duration * (key + 0)) / 100;
+        elVideo.currentTime = (elVideo.duration * Number(key + 0)) / 100;
     }
   });
 
   document.addEventListener(
     "click",
-    e => {
+    (e: MouseEvent) => {
       // When the user clicks a lesson from a lessons list on the right side,
       // the video will be focused
-      if (!e.target.closest(".session-item")) {
+      const element = e.target as HTMLElement;
+      if (!element.closest(".session-item")) {
         return;
       }
 
-      requestAnimationFrame(() => {
+      requestAnimationFrame((): void => {
         elVideoDiv.focus();
       });
     },
     { capture: true }
   );
 
-  function addIdleListener() {
+  function addIdleListener(): void {
     let timeoutMouseMove;
     let timeoutPlayPause;
 
-    const onMouseMoveOrSeeked = () => {
+    const onMouseMoveOrSeeked = (): void => {
       if (!getIsFullScreen()) {
         return;
       }
@@ -166,7 +203,7 @@ export function registerHotkeys(elVideo) {
     };
     elVideoDiv.addEventListener("mousemove", onMouseMoveOrSeeked);
 
-    const prepareToHideControls = () => {
+    const prepareToHideControls = (): void => {
       timeoutPlayPause = setTimeout(() => {
         if (!elVideo.paused) {
           hidePlayerControls();
@@ -174,27 +211,28 @@ export function registerHotkeys(elVideo) {
       }, secondsUntilControlsHide * 1000);
     };
 
-    const prepareToShowControls = () => {
+    const prepareToShowControls = (): void => {
       clearTimeout(timeoutPlayPause);
       showPlayerControls();
     };
 
-    const onCanPlay = ({ target }) => target.play();
+    const onCanPlay = ({ target }): Promise<void> => target.play();
 
-    const toggleVideoListeners = (elVideo, isAdd) => {
+    const toggleVideoListeners = (elVideo: HTMLVideoElement, isAdd: boolean): void => {
       if (isAdd) {
         elVideo.addEventListener("canplay", onCanPlay);
         elVideo.addEventListener("play", prepareToHideControls);
         elVideo.addEventListener("pause", prepareToShowControls);
         elVideo.addEventListener("seeked", onMouseMoveOrSeeked);
         elVideoDiv.addEventListener("fullscreenchange", prepareToHideControls);
-      } else {
-        elVideo.removeEventListener("canplay", onCanPlay);
-        elVideo.removeEventListener("play", prepareToHideControls);
-        elVideo.removeEventListener("pause", prepareToShowControls);
-        elVideo.removeEventListener("seeked", onMouseMoveOrSeeked);
-        elVideoDiv.removeEventListener("fullscreenchange", prepareToHideControls);
+        return;
       }
+
+      elVideo.removeEventListener("canplay", onCanPlay);
+      elVideo.removeEventListener("play", prepareToHideControls);
+      elVideo.removeEventListener("pause", prepareToShowControls);
+      elVideo.removeEventListener("seeked", onMouseMoveOrSeeked);
+      elVideoDiv.removeEventListener("fullscreenchange", prepareToHideControls);
     };
 
     // If another video in the playlist was clicked
@@ -205,45 +243,30 @@ export function registerHotkeys(elVideo) {
     }).observe(elVideoDiv, { childList: true });
   }
 
-  function addFullscreenListener() {
+  function addFullscreenListener(): void {
     elButtonFullscreen.addEventListener("click", () => {
       elVideoDiv.focus();
     });
   }
 
-  function showPlayerControls() {
+  function showPlayerControls(): void {
     elVideoDiv.dispatchEvent(events.mouseenter);
   }
 
-  function hidePlayerControls() {
+  function hidePlayerControls(): void {
     elVideoDiv.dispatchEvent(events.mouseleave);
   }
 
-  /**
-   * @returns {boolean}
-   */
-  function getIsFullScreen() {
+  function getIsFullScreen(): boolean {
+    // @ts-ignore
     return Boolean(document.webkitIsFullScreen || document.isFullScreen);
   }
 
-  /**
-   * @param {HTMLCollectionOf<Element>} items
-   * @returns {number}
-   */
-  function getCurrentIndex(items) {
-    for (let i = 0; i < items.length; i++) {
-      if (items[i].classList.contains("active")) {
-        return i;
-      }
-    }
+  function getCurrentIndex(items: HTMLElement[]): number {
+    return items.findIndex(item => item.classList.contains("active"));
   }
 
-  /**
-   * @param {NodeListOf} items
-   * @param {number} i
-   * @param {boolean} isNext
-   */
-  function clickNextItemIfPossible(items, i, isNext) {
+  function clickNextItemIfPossible({ items, i, isNext }: { items: HTMLElement[]; i: number; isNext: boolean }): void {
     if (!isNext) {
       if (i > 0) {
         items[i - 1].click();
@@ -253,11 +276,8 @@ export function registerHotkeys(elVideo) {
     }
   }
 
-  /**
-   * @returns {boolean}
-   */
-  function getIsMuted() {
-    const elButtonMute = document.querySelector(".vjs-mute-control");
+  function getIsMuted(): boolean {
+    const elButtonMute = document.querySelector<HTMLButtonElement>(".vjs-mute-control");
     return elButtonMute.classList.contains("vjs-vol-0");
   }
 }
