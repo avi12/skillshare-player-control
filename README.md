@@ -41,34 +41,38 @@ Install [Node.js](https://nodejs.org) and [PNPM](https://pnpm.js.org/en/installa
 pnpm i
 ```
 
-## Start Rollup for development
+## Start development server
 
 ```shell script
 pnpm dev
 ```
 
-## Running
-
-### Note that to fully test all the features, you need a [Skillshare subscription](https://www.skillshare.com/membership/checkout).
-
-### Chromium/Chrome
+## Start development server for Firefox
 
 ```shell script
-pnpm run-chromium
+pnpm dev:firefox
 ```
 
-### Edge on Windows 10/11
+## Running
+
+### Note:
+
+To fully test all the features, you'll need a [Skillshare subscription](https://www.skillshare.com/membership/checkout).  
+I recommend creating a temporary Skillshare account while
+using [DuckDuckGo](https://duckduckgo.com/email/settings/autofill) to set up a temporary email that will forward to your
+personal email, so you can easily delete the temporary email address when you're done testing.
+
+### Chrome
 
 ```shell
-pnpm run-edge-windows
+pnpm run:chrome
 ```
 
-### Browsers that don't support Manifest v3
+### Firefox
 
-1. Build the extension for Firefox/Opera (see below).
-2. Open the extensions page in that browser.
-3. Enable the developer mode (top-right corner usually).
-4. Either drag-drop the browser-compatible ZIP onto the browser or click "Load unpacked extension" and choose it.
+```shell
+pnpm run:firefox
+```
 
 ## Build & pack
 
@@ -76,12 +80,13 @@ pnpm run-edge-windows
 pnpm build-pack
 ```
 
-### Build for Firefox (first run `pnpm build-pack`)
+### Build & pack for Firefox
 
 ```shell
-pnpm build-for-firefox
+pnpm build:firefox && pnpm pack:firefox
 ```
 
 ## Do you want to contribute?
 
-Feel free to! Make sure to comply with the license, [GPL v3](https://github.com/avi12/skillshare-player-control/blob/main/LICENSE).
+Feel free to! Make sure to comply with the
+license, [GPL v3](https://github.com/avi12/skillshare-player-control/blob/main/LICENSE).
