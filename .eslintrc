@@ -1,4 +1,5 @@
 {
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
     "ecmaVersion": 2021,
     "sourceType": "module"
@@ -22,6 +23,15 @@
     ],
     "semi": "warn",
     "prefer-const": "warn",
-    "comma-dangle": "warn"
-  }
+    "comma-dangle": "warn",
+    "@typescript-eslint/explicit-function-return-type": "warn",
+    "@typescript-eslint/explicit-module-boundary-types": ["warn"]
+  },
+  "plugins": ["svelte3", "@typescript-eslint"],
+  "overrides": [
+    {
+      "files": ["*.svelte"],
+      "processor": "svelte3/svelte3"
+    }
+  ]
 }

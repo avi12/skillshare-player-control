@@ -1,24 +1,42 @@
-# Yarn and npm
-npm-debug.log
-node_modules
 
-*.env
-
-# WebStorm files
-.idea/*
-
-# Vim swap files
-*.swp
-*.swo
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+.idea
+.vscode
 
 # Sublime files
 *.sublime-workspace
 *.sublime-project
 
-# Mac and windows files
-.DS_Store
-.tmp
+# dependencies
+node_modules
+.pnp
+.pnp.js
 
-# Distribution
-/dist_packed
-/dist/build
+#cache
+.turbo
+.next
+.vercel
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+
+# local env files
+*.env
+
+build
+dist
+dist_packed
+
+# plasmo - https://www.plasmo.com
+.plasmo
+
+# typescript
+.tsbuildinfo
