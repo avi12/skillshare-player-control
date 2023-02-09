@@ -129,32 +129,36 @@ export function registerHotkeys(elVideo: HTMLVideoElement): void {
 
       case "Comma": // < - Slow down the video
       case "Period": // > - Speed up the video
-        if (!shiftKey) {
-          return;
-        }
+        {
+          if (!shiftKey) {
+            return;
+          }
 
-        const iSpeed = getCurrentIndex(elSpeeds);
-        clickNextItemIfPossible({
-          items: elSpeeds,
-          i: iSpeed,
-          isNext: code === "Period"
-        });
-        elVideoDiv.focus();
+          const iSpeed = getCurrentIndex(elSpeeds);
+          clickNextItemIfPossible({
+            items: elSpeeds,
+            i: iSpeed,
+            isNext: code === "Period"
+          });
+          elVideoDiv.focus();
+        }
         break;
 
       case "KeyP": // Shift + P - Go to the previous video in the playlist
       case "KeyN": // Shift + N - Go to the next video in the playlist
-        if (!shiftKey) {
-          return;
-        }
+        {
+          if (!shiftKey) {
+            return;
+          }
 
-        const iLesson = getCurrentIndex(elLessons);
-        clickNextItemIfPossible({
-          items: elLessons,
-          i: iLesson,
-          isNext: code === "KeyN"
-        });
-        elVideoDiv.focus();
+          const iLesson = getCurrentIndex(elLessons);
+          clickNextItemIfPossible({
+            items: elLessons,
+            i: iLesson,
+            isNext: code === "KeyN"
+          });
+          elVideoDiv.focus();
+        }
         break;
 
       default:
@@ -258,6 +262,7 @@ export function registerHotkeys(elVideo: HTMLVideoElement): void {
   }
 
   function getIsFullScreen(): boolean {
+    // eslint-disable-next-line @typescript-eslint/ban-ts-comment
     // @ts-ignore
     return Boolean(document.webkitIsFullScreen || document.isFullScreen);
   }

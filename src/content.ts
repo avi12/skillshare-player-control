@@ -1,5 +1,5 @@
-import { registerHotkeys } from "~contents/skillshare-content-script-hotkeys";
-import type { PlasmoContentScript } from "plasmo";
+import type { PlasmoCSConfig } from "plasmo";
+import { registerHotkeys } from "~cs-utils/skillshare-content-script-hotkeys";
 
 new MutationObserver((_, observer) => {
   const elVideo = document.querySelector<HTMLVideoElement>(`video[src*="skillshare.com"]`);
@@ -11,6 +11,6 @@ new MutationObserver((_, observer) => {
   observer.disconnect();
 }).observe(document.documentElement, { childList: true, subtree: true });
 
-export const config: PlasmoContentScript = {
+export const config: PlasmoCSConfig = {
   matches: ["https://www.skillshare.com/*"]
 };
