@@ -59,6 +59,46 @@
   </tr>
 </table>
 
-<style lang="scss">
-  @import "options/options.scss";
+<style global lang="scss">
+  html {
+    font-size: max(1rem, 16px);
+  }
+
+  body {
+    font-size: 1rem;
+    font-family: Arial, sans-serif;
+    margin: 1rem;
+  }
+
+  h1 {
+    font-size: 1.5em;
+  }
+
+  table {
+    border-collapse: collapse;
+  }
+
+  tr:last-child > td {
+    border-bottom: none;
+  }
+
+  td {
+    border-bottom: 1px solid;
+    padding: 0.2rem;
+
+    &:first-of-type {
+      white-space: nowrap;
+    }
+  }
+
+  kbd {
+    font-family: Arial, sans-serif;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    body {
+      color: white;
+      background: black;
+    }
+  }
 </style>
