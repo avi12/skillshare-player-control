@@ -19,7 +19,9 @@
   },
   "dependencies": {
     "plasmo": "0.64.5",
-    "svelte": "^3.55.1"
+    "sass": "^1.58.0",
+    "svelte": "^3.55.1",
+    "svelte-preprocess": "^5.0.1"
   },
   "devDependencies": {
     "@plasmohq/prettier-plugin-sort-imports": "3.6.1",
