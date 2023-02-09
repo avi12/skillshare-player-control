@@ -47,12 +47,6 @@ pnpm i
 pnpm dev
 ```
 
-## Start development server for Firefox
-
-```shell script
-pnpm dev:firefox
-```
-
 ## Running
 
 ### Note:
