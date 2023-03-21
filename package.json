@@ -18,26 +18,26 @@
     "run:firefox": "pnpm run-browser firefox-desktop --source-dir build/chrome-mv3-dev"
   },
   "dependencies": {
-    "plasmo": "0.64.5",
-    "sass": "^1.58.0",
-    "svelte": "^3.55.1",
-    "svelte-preprocess": "^5.0.1"
+    "plasmo": "0.67.4",
+    "sass": "^1.59.3",
+    "svelte": "^3.57.0",
+    "svelte-preprocess": "^5.0.3"
   },
   "devDependencies": {
-    "@plasmohq/prettier-plugin-sort-imports": "3.6.1",
-    "@types/chrome": "0.0.212",
-    "@types/node": "18.13.0",
-    "@typescript-eslint/eslint-plugin": "^5.51.0",
-    "@typescript-eslint/parser": "^5.51.0",
-    "eslint": "^8.33.0",
+    "@plasmohq/prettier-plugin-sort-imports": "3.6.3",
+    "@types/chrome": "0.0.224",
+    "@types/node": "18.15.5",
+    "@typescript-eslint/eslint-plugin": "^5.56.0",
+    "@typescript-eslint/parser": "^5.56.0",
+    "eslint": "^8.36.0",
     "eslint-config-avi12": "github:avi12/eslint-config-avi12",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-svelte3": "^4.0.0",
-    "prettier": "2.8.4",
+    "prettier": "2.8.6",
     "prettier-plugin-svelte": "^2.9.0",
-    "typescript": "4.9.5",
-    "web-ext": "^7.5.0",
-    "zip-self": "^0.5.5"
+    "typescript": "5.0.2",
+    "web-ext": "^7.6.0",
+    "zip-self": "^0.5.6"
   },
   "manifest": {
     "offline_enabled": true,
