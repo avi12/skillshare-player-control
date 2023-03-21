@@ -41,13 +41,19 @@ Install [Node.js](https://nodejs.org) and [PNPM](https://pnpm.js.org/en/installa
 pnpm i
 ```
 
-## Start development server
+## Start the dev server
+
+### Chromium browsers
 
 ```shell script
 pnpm dev
 ```
 
-## Running
+### Firefox
+
+```shell script
+pnpm dev:firefox
+```
 
 ### Note:
 
@@ -56,16 +62,36 @@ I recommend creating a temporary Skillshare account while
 using [DuckDuckGo](https://duckduckgo.com/email/settings/autofill) to set up a temporary email that will forward to your
 personal email, so you can easily delete the temporary email address when you're done testing.
 
-### Chrome
+## Running
+
+### Chromium/Chrome
+
+```shell script
+pnpm run-chromium
+```
+
+### Chromium/Chrome RTL
+
+```shell script
+pnpm run-chromium:rtl
+```
+
+### Edge on Windows 10/11
 
 ```shell
-pnpm run:chrome
+pnpm run-edge:windows
+```
+
+### Opera on Windows 10/11
+
+```shell
+pnpm run-opera:windows
 ```
 
 ### Firefox
 
 ```shell
-pnpm run:firefox
+pnpm run-firefox
 ```
 
 ## Build & pack
@@ -80,7 +106,8 @@ pnpm build-pack
 pnpm build-pack:firefox
 ```
 
-## Do you want to contribute?
+## Contribution
 
-Feel free to! Make sure to comply with the
-license, [GPL v3](https://github.com/avi12/skillshare-player-control/blob/main/LICENSE).
+Feel free to contribute! Keep in mind that the license I chose
+is [GPL v3](https://github.com/avi12/youtube-auto-hd/blob/main/LICENSE).  
+If you want to fork, make sure to credit [avi12](https://avi12.com) and link to this repository.
