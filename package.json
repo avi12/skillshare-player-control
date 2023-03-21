@@ -51,6 +51,11 @@
     "options_ui": {
       "open_in_tab": false,
       "browser_style": true
+    },
+    "browser_specific_settings": {
+      "gecko": {
+        "id": "$PLASMO_PUBLIC_FIREFOX_EXT_ID"
+      }
     }
   }
 }
