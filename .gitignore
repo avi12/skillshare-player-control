@@ -32,8 +32,7 @@ yarn-error.log*
 *.env
 
 build
-dist
-dist_packed
+dist-pack
 
 # plasmo - https://www.plasmo.com
 .plasmo
