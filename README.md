@@ -70,12 +70,6 @@ personal email, so you can easily delete the temporary email address when you're
 pnpm run-chromium
 ```
 
-### Chromium/Chrome RTL
-
-```shell script
-pnpm run-chromium:rtl
-```
-
 ### Edge on Windows 10/11
 
 ```shell
