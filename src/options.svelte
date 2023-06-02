@@ -10,12 +10,16 @@
     <th>Function</th>
   </tr>
   <tr>
-    <td><kbd>Left</kbd>/<kbd>Right</kbd>keys </td>
+    <td>Left/Right keys </td>
     <td>Backward/Forward</td>
   </tr>
   <tr>
-    <td><kbd>Up</kbd>/<kbd>Down</kbd>keys </td>
+    <td>Up/Down keys </td>
     <td>Volume up/down</td>
+  </tr>
+  <tr>
+    <td><kbd>Space</kbd></td>
+    <td>Play/Pause</td>
   </tr>
   <tr>
     <td><kbd>M</kbd></td>
@@ -47,14 +51,14 @@
   </tr>
   <tr>
     <td><kbd>0</kbd>-<kbd>9</kbd></td>
-    <td>Set the time to (number + 0) % , e.g. 10%</td>
+    <td>Seek to (number + 0) % , e.g. 10%</td>
   </tr>
   <tr>
     <td><kbd>F</kbd></td>
     <td>Full-screen</td>
   </tr>
   <tr>
-    <td>Double-click video </td>
+    <td>Double-click video</td>
     <td>Full-screen</td>
   </tr>
 </table>

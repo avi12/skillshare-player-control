@@ -2,7 +2,7 @@ import type { PlasmoCSConfig } from "plasmo";
 import { registerHotkeys } from "~cs-utils/skillshare-content-script-hotkeys";
 
 new MutationObserver((_, observer) => {
-  const elVideo = document.querySelector<HTMLVideoElement>(`video[src*="skillshare.com"]`);
+  const elVideo: HTMLVideoElement = document.querySelector(`video[src*="skillshare.com"]`);
   if (!elVideo) {
     return;
   }
