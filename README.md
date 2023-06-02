@@ -2,21 +2,21 @@
 
 Adds basic keyboard controls to the Skillshare player:
 
-|                Key | Description                           |
-| -----------------: | ------------------------------------- |
-|    Left/Right keys | Backward/Forward                      |
-|       Up/Down keys | Volume up/down                        |
-|              Space | Pause/Play                            |
-|                  M | Toggle mute                           |
-|                  T | Toggle Theater Mode                   |
-|          Shift + P | Play previous video on playlist       |
-|          Shift + N | Play next video on playlist           |
-|                  < | Slow down the video                   |
-|                 \> | Speed up the video                    |
-|           Home/End | Beginning/End of video                |
-|                0-9 | Set time to (Number + 0) % , e.g. 10% |
-|                  F | Full-screen                           |
-| Double-click video | Full-screen                           |
+|                             Key | Description                       |
+| ------------------------------: | --------------------------------- |
+|                 Left/Right keys | Backward/Forward                  |
+|                    Up/Down keys | Volume up/down                    |
+|                <kbd>Space</kbd> | Pause/Play                        |
+|                    <kbd>M</kbd> | Toggle mute                       |
+|                    <kbd>T</kbd> | Toggle Theater Mode               |
+| <kbd>Shift</kbd> + <kbd>P</kbd> | Play previous video on playlist   |
+| <kbd>Shift</kbd> + <kbd>N</kbd> | Play next video on playlist       |
+|                    <kbd><</kbd> | Slow down the video               |
+|                    <kbd>></kbd> | Speed up the video                |
+|  <kbd>Home</kbd>/<kbd>End</kbd> | Beginning/End of video            |
+|       <kbd>0</kbd>-<kbd>9</kbd> | Seek to (Number + 0) % , e.g. 10% |
+|                    <kbd>F</kbd> | Full-screen                       |
+|              Double-click video | Full-screen                       |
 
 Additional features:
 
@@ -57,36 +57,49 @@ pnpm dev:firefox
 
 ### Note:
 
-To fully test all the features, you'll need a [Skillshare subscription](https://www.skillshare.com/membership/checkout).  
-I recommend creating a temporary Skillshare account while
-using [DuckDuckGo](https://duckduckgo.com/email/settings/autofill) to set up a temporary email that will forward to your
-personal email, so you can easily delete the temporary email address when you're done testing.
+To fully test all the features, you'll need a [Skillshare subscription](https://www.skillshare.com/membership/checkout).
+
+You can do it for free by:
+
+1. Create a Skillshare account (I recommend using [DuckDuckGo](https://duckduckgo.com/email/settings/autofill))
+2. Start the first free month with PayPal
+3. [Cancel the subscription](https://www.paypal.com/myaccount/autopay)
+
+After the cancellation, you'll be able to continue testing the extension for a month.
 
 ## Running
 
 ### Chromium/Chrome
 
-```shell script
-pnpm run-chromium
-```
+1. ```shell script
+   pnpm run-chromium
+   ```
+2. Login to Skillshare and start testing
 
 ### Edge on Windows 10/11
 
-```shell
-pnpm run-edge:windows
-```
+1. ```shell
+   pnpm run-edge:windows
+   ```
+2. Login to Skillshare and start testing
 
 ### Opera on Windows 10/11
 
-```shell
-pnpm run-opera:windows
-```
+1. ```shell
+   pnpm run-opera:windows
+   ```
+2. Login to Skillshare and start testing
 
 ### Firefox
 
-```shell
-pnpm run-firefox
-```
+1. ```shell
+   pnpm run-firefo
+   ```
+2. Go to `about:addons` (shortcut <kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>)
+3. Click on "Skillshare Player Control"
+4. "Permissions" tab
+5. Make sure that "Access your data for https://www.skillshare.com" is enabled
+6. Login to Skillshare and start testing
 
 ## Build & pack
 
