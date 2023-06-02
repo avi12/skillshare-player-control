@@ -44,7 +44,6 @@
     "zip-self": "^0.5.6"
   },
   "manifest": {
-    "offline_enabled": true,
     "options_ui": {
       "open_in_tab": false,
       "browser_style": true
