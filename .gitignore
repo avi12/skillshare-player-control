@@ -29,7 +29,10 @@ yarn-error.log*
 
 
 # local env files
-*.env
+chrome.env
+firefox.env
+edge.env
+opera.env
 
 build
 web-ext-artifacts
