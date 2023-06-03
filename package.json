@@ -1,7 +1,7 @@
 {
   "name": "skillshare-player-control",
   "displayName": "Skillshare Player Control",
-  "version": "2.0.4",
+  "version": "2.0.5",
   "description": "Basic keyboard controls for the Skillshare player.",
   "author": "avi12",
   "scripts": {
@@ -52,6 +52,7 @@
       "gecko": {
         "id": "$PLASMO_PUBLIC_FIREFOX_EXT_ID"
       }
-    }
+    },
+    "offline_enabled": true
   }
 }
