@@ -8,7 +8,7 @@
     "dev": "plasmo dev",
     "dev:firefox": "plasmo dev --target=firefox-mv3",
     "build": "plasmo build --minify",
-    "build:firefox": "plasmo build --minify --target=firefox-mv3",
+    "build:firefox": "plasmo build --minify --verbose --target=firefox-mv3",
     "package": "web-ext build --source-dir build/chrome-mv3-prod --filename skillshare-player-control-{version}.zip",
     "package:firefox": "web-ext build --source-dir build/firefox-mv3-prod --filename skillshare-player-control-{version}_adapted_for_firefox.zip",
     "package:self": "zip-self -o web-ext-artifacts/skillshare-player-control-{version}-source.zip",
@@ -22,7 +22,7 @@
     "run-opera:windows": "pnpm run-browser chromium --source-dir build/chrome-mv3-dev --chromium-binary \"%LocalAppData%\\Programs\\Opera\\opera.exe\""
   },
   "dependencies": {
-    "plasmo": "^0.76.3",
+    "plasmo": "0.75.2",
     "sass": "^1.63.6",
     "svelte": "^3.59.2",
     "svelte-preprocess": "^5.0.4"
