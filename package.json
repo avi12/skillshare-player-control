@@ -22,26 +22,26 @@
     "run-opera:windows": "pnpm run-browser chromium --source-dir build/chrome-mv3-dev --chromium-binary \"%LocalAppData%\\Programs\\Opera\\opera.exe\""
   },
   "dependencies": {
-    "plasmo": "0.75.2",
+    "plasmo": "0.80.0",
     "sass": "^1.63.6",
-    "svelte": "^3.59.2",
+    "svelte": "^4.0.5",
     "svelte-preprocess": "^5.0.4"
   },
   "devDependencies": {
     "@plasmohq/prettier-plugin-sort-imports": "3.6.4",
-    "@types/chrome": "0.0.239",
-    "@types/node": "20.3.2",
-    "@typescript-eslint/eslint-plugin": "^5.60.1",
-    "@typescript-eslint/parser": "^5.60.1",
-    "eslint": "^8.43.0",
+    "@types/chrome": "0.0.240",
+    "@types/node": "20.4.1",
+    "@typescript-eslint/eslint-plugin": "^6.0.0",
+    "@typescript-eslint/parser": "^6.0.0",
+    "eslint": "^8.44.0",
     "eslint-config-avi12": "github:avi12/eslint-config-avi12",
     "eslint-plugin-import": "^2.27.5",
     "eslint-plugin-svelte3": "^4.0.0",
-    "prettier": "2.8.8",
+    "prettier": "3.0.0",
     "prettier-plugin-svelte": "^2.10.1",
-    "typescript": "5.1.5",
+    "typescript": "5.1.6",
     "web-ext": "^7.6.2",
-    "zip-self": "^0.5.7"
+    "zip-self": "^0.5.8"
   },
   "manifest": {
     "options_ui": {
