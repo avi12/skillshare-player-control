@@ -118,31 +118,21 @@ export function registerHotkeys(elVideo: HTMLVideoElement): void {
         break;
 
       case "ArrowLeft": // Go X seconds back (default: 5)
-        elVideo.currentTime -= secondsToSeek;
+        elVideo.currentTime = Math.max(0, elVideo.currentTime - secondsToSeek);
         break;
 
       case "ArrowRight": // Go X seconds forward (default: 5)
-        elVideo.currentTime += secondsToSeek;
+        elVideo.currentTime = Math.min(elVideo.duration, elVideo.currentTime + secondsToSeek);
         break;
 
       case "ArrowUp": // Volume up by X percent (default: 5)
-        {
-          e.preventDefault();
-          const volumeNew = (elVideo.volume * 100 + volumeChangeRate) / 100;
-          if (volumeNew <= 1) {
-            elVideo.volume = volumeNew;
-          }
-        }
+        e.preventDefault();
+        elVideo.volume = Math.min(1, elVideo.volume + volumeChangeRate / 100);
         break;
 
       case "ArrowDown": // Volume down by X percent (default: 5)
-        {
-          e.preventDefault();
-          const volumeNew = (elVideo.volume * 100 - volumeChangeRate) / 100;
-          if (volumeNew >= 0) {
-            elVideo.volume = volumeNew;
-          }
-        }
+        e.preventDefault();
+        elVideo.volume = Math.max(0, elVideo.volume - volumeChangeRate / 100);
         break;
 
       case "Comma": // < - Slow down the video
@@ -186,7 +176,7 @@ export function registerHotkeys(elVideo: HTMLVideoElement): void {
       default:
         // Seek to (number + 0) % of the video, e.g. 10%
         if (!isNaN(+key) && !ctrlKey) {
-          elVideo.currentTime = (elVideo.duration * Number(key + 0)) / 100;
+          elVideo.currentTime = +key / 10 * elVideo.duration;
         }
     }
   });
