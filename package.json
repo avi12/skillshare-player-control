@@ -22,26 +22,26 @@
     "run-opera:windows": "pnpm run-chromium --chromium-binary \"%LocalAppData%\\Programs\\Opera\\opera.exe\""
   },
   "dependencies": {
-    "plasmo": "0.84.0",
-    "sass": "^1.69.5",
-    "svelte": "^4.2.8",
-    "svelte-preprocess": "^5.1.2"
+    "plasmo": "0.85.2",
+    "sass": "^1.74.1",
+    "svelte": "^4.2.12",
+    "svelte-preprocess": "^5.1.3"
   },
   "devDependencies": {
-    "@ianvs/prettier-plugin-sort-imports": "4.1.1",
-    "@types/chrome": "0.0.254",
-    "@types/node": "20.10.4",
-    "@typescript-eslint/eslint-plugin": "^6.14.0",
-    "@typescript-eslint/parser": "^6.14.0",
-    "eslint": "^8.56.0",
+    "@ianvs/prettier-plugin-sort-imports": "4.2.1",
+    "@types/chrome": "0.0.263",
+    "@types/node": "20.12.4",
+    "@typescript-eslint/eslint-plugin": "^7.5.0",
+    "@typescript-eslint/parser": "^7.5.0",
+    "eslint": "^8.57.0",
     "eslint-config-avi12": "github:avi12/eslint-config-avi12",
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-svelte": "^2.35.1",
-    "prettier": "3.1.1",
-    "prettier-plugin-svelte": "^3.1.2",
-    "typescript": "5.3.3",
-    "web-ext": "^7.9.0",
-    "zip-self": "^0.6.0"
+    "prettier": "3.2.5",
+    "prettier-plugin-svelte": "^3.2.2",
+    "typescript": "5.4.3",
+    "web-ext": "^7.11.0",
+    "zip-self": "^0.6.1"
   },
   "manifest": {
     "options_ui": {
