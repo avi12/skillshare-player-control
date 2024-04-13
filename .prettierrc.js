@@ -16,4 +16,4 @@ export default {
   importOrderSeparation: true,
   importOrderSortSpecifiers: true,
   arrowParens: "avoid"
-}
+};
