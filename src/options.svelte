@@ -67,8 +67,6 @@
   </tr>
 </table>
 
-<style global lang="scss">
-  html {
 <style>
   :global(html) {
     font-size: max(1rem, 16px);
@@ -103,12 +101,5 @@
 
   kbd {
     font-family: Arial, sans-serif;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    body {
-      color: white;
-      background: black;
-    }
   }
 </style>
