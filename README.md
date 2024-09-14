@@ -94,7 +94,7 @@ After the cancellation, you'll be able to continue testing the extension for a m
 ### Firefox
 
 1. ```shell
-   pnpm run-firefo
+   pnpm run-firefox
    ```
 2. Go to `about:addons` (shortcut <kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>)
 3. Click on "Skillshare Player Control"
