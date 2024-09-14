@@ -69,10 +69,12 @@
 
 <style global lang="scss">
   html {
+<style>
+  :global(html) {
     font-size: max(1rem, 16px);
   }
 
-  body {
+  :global(body) {
     font-size: 1rem;
     font-family: Arial, sans-serif;
     margin: 1rem;
