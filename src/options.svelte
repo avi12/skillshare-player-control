@@ -2,7 +2,7 @@
   <title>Skillshare Controls</title>
 </svelte:head>
 
-<h1>Hotkeys map:</h1>
+<h1>Hotkeys</h1>
 
 <table>
   <tr>
