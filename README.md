@@ -3,8 +3,9 @@
 Adds basic keyboard controls to the Skillshare player:
 
 |                             Key | Description                       |
-| ------------------------------: | --------------------------------- |
-|                 Left/Right keys | Backward/Forward                  |
+|--------------------------------:|-----------------------------------|
+|                 Left/Right keys | Backward/Forward 5 seconds        |
+|  <kbd>J</kbd>/<kbd>K</kbd> keys | Backward/Forward 10 seconds       |
 |                    Up/Down keys | Volume up/down                    |
 |                <kbd>Space</kbd> | Pause/Play                        |
 |                    <kbd>M</kbd> | Toggle mute                       |

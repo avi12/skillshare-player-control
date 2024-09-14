@@ -27,8 +27,9 @@ export function registerHotkeys(elVideo: HTMLVideoElement): void {
     const { code, key, shiftKey, ctrlKey } = e;
     const elVideo = document.querySelector("video");
 
-    const secondsToSeek = 5;
-    const volumeChangeRate = 5;
+    const SECONDS_SEEK_SLOW = 5;
+    const SECONDS_SEEK_FAST = 10;
+    const RATE_VOLUME = 5;
 
     // If the user is focused in an input, don't do anything
     if (document.activeElement.matches("input, textarea, select")) {
@@ -117,22 +118,30 @@ export function registerHotkeys(elVideo: HTMLVideoElement): void {
         await elVideo.play();
         break;
 
-      case "ArrowLeft": // Go X seconds back (default: 5)
-        elVideo.currentTime = Math.max(0, elVideo.currentTime - secondsToSeek);
+      case "ArrowLeft": // Go 5 seconds back
+        elVideo.currentTime = Math.max(0, elVideo.currentTime - SECONDS_SEEK_SLOW);
         break;
 
-      case "ArrowRight": // Go X seconds forward (default: 5)
-        elVideo.currentTime = Math.min(elVideo.duration, elVideo.currentTime + secondsToSeek);
+      case "ArrowRight": // Go 5 seconds forward
+        elVideo.currentTime = Math.min(elVideo.duration, elVideo.currentTime + SECONDS_SEEK_SLOW);
+        break;
+
+      case "KeyJ": // Go 10 seconds back
+        elVideo.currentTime = Math.max(0, elVideo.currentTime - SECONDS_SEEK_FAST);
+        break;
+
+      case "KeyK": // Go 10 seconds forward
+        elVideo.currentTime = Math.min(elVideo.duration, elVideo.currentTime + SECONDS_SEEK_FAST);
         break;
 
       case "ArrowUp": // Volume up by X percent (default: 5)
         e.preventDefault();
-        elVideo.volume = Math.min(1, elVideo.volume + volumeChangeRate / 100);
+        elVideo.volume = Math.min(1, elVideo.volume + RATE_VOLUME / 100);
         break;
 
       case "ArrowDown": // Volume down by X percent (default: 5)
         e.preventDefault();
-        elVideo.volume = Math.max(0, elVideo.volume - volumeChangeRate / 100);
+        elVideo.volume = Math.max(0, elVideo.volume - RATE_VOLUME / 100);
         break;
 
       case "Comma": // < - Slow down the video

@@ -11,7 +11,11 @@
   </tr>
   <tr>
     <td>Left/Right keys </td>
-    <td>Backward/Forward</td>
+    <td>Backward/Forward 5 seconds</td>
+  </tr>
+  <tr>
+    <td><kbd>J</kbd>/<kbd>K</kbd></td>
+    <td>Backward/Forward 10 seconds</td>
   </tr>
   <tr>
     <td>Up/Down keys </td>
