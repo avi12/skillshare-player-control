@@ -26,15 +26,17 @@ Additional features:
 Available for:
 
 - [Google Chrome](https://chrome.google.com/webstore/detail/agbhgcomfpcfboebbfmefbicfkpnlfeg) ![Chrome Web Store](https://img.shields.io/chrome-web-store/users/agbhgcomfpcfboebbfmefbicfkpnlfeg?color=white&label=users&style=flat-square)
-- [Mozilla Firefox](https://addons.mozilla.org/addon/skillshare-player-control) ![Mozilla Add-on](https://img.shields.io/amo/users/skillshare-player-control?color=white&label=users&style=flat-square)
+- [Mozilla Firefox](https://addons.mozilla.org/addon/skillshare-player-control) 109+ ![Mozilla Add-on](https://img.shields.io/amo/users/skillshare-player-control?color=white&label=users&style=flat-square)
 - [Microsoft Edge](https://microsoftedge.microsoft.com/addons/detail/ldgdglnmpaghmpoabbfadpnnaobhjffe) ![users count](https://img.shields.io/badge/dynamic/json?label=users&query=activeInstallCount&style=flat-square&color=white&url=https://microsoftedge.microsoft.com/addons/getproductdetailsbycrxid/ldgdglnmpaghmpoabbfadpnnaobhjffe)
 - [Opera](https://addons.opera.com/en/extensions/details/skillshare-player-control)
 
-Made by [avi12](https://avi12.com).
+Made by [Avi](https://avi12.com).
 
 ## Requirements for setting up
 
-Install [Node.js](https://nodejs.org) and [PNPM](https://pnpm.js.org/en/installation).
+1. Install [Node.js](https://nodejs.org) and [PNPM](https://pnpm.io/installation)
+2. Start a [subscription](https://www.skillshare.com/membership/checkout). I recommend using [DuckDuckGo](https://duckduckgo.com/email/settings/autofill) to create a temporary account
+3. You can [cancel the subscription](https://www.paypal.com/myaccount/autopay) and freely test the extension for a week
 
 ## Install dependencies
 
@@ -42,80 +44,93 @@ Install [Node.js](https://nodejs.org) and [PNPM](https://pnpm.js.org/en/installa
 pnpm i
 ```
 
-## Start the dev server
+## Start the dev server & run in a test browser
 
-### Chromium browsers
+### Chrome
 
 ```shell script
 pnpm dev
 ```
 
+### Edge
+
+```shell
+pnpm dev:edge
+```
+
+### Opera
+
+```shell
+pnpm dev:opera
+```
+
 ### Firefox
+
+Currently [unsupported](https://github.com/wxt-dev/wxt/issues/230#issuecomment-1806881653)  
+Instead, after building you can follow [this guide](https://extensionworkshop.com/documentation/develop/temporary-installation-in-firefox)
+
+## Build
+
+### Chrome/Edge
 
 ```shell script
-pnpm dev:firefox
+pnpm build
 ```
 
-### Note:
+### Opera
 
-To fully test all the features, you'll need a [Skillshare subscription](https://www.skillshare.com/membership/checkout).
-
-You can do it for free by:
-
-1. Create a Skillshare account (I recommend using [DuckDuckGo](https://duckduckgo.com/email/settings/autofill))
-2. Start the first free month with PayPal
-3. [Cancel the subscription](https://www.paypal.com/myaccount/autopay)
-
-After the cancellation, you'll be able to continue testing the extension for a month.
-
-## Running
-
-### Chromium/Chrome
-
-1. ```shell script
-   pnpm run-chromium
-   ```
-2. Login to Skillshare and start testing
-
-### Edge on Windows 10/11
-
-1. ```shell
-   pnpm run-edge:windows
-   ```
-2. Login to Skillshare and start testing
-
-### Opera on Windows 10/11
-
-1. ```shell
-   pnpm run-opera:windows
-   ```
-2. Login to Skillshare and start testing
+```shell
+pnpm build:opera
+```
 
 ### Firefox
 
-1. ```shell
-   pnpm run-firefox
-   ```
-2. Go to `about:addons` (shortcut <kbd>Ctrl</kbd>/<kbd>Cmd</kbd>+<kbd>Shift</kbd>+<kbd>A</kbd>)
-3. Click on "Skillshare Player Control"
-4. "Permissions" tab
-5. Make sure that "Access your data for https://www.skillshare.com" is enabled
-6. Login to Skillshare and start testing
-
-## Build & pack
-
 ```shell
-pnpm build-pack
+pnpm build:firefox
 ```
 
-### Build & pack for Firefox
+## Package
+
+### Chrome/Edge
 
 ```shell
-pnpm build-pack:firefox
+pnpm package
+```
+
+### Opera
+
+```shell
+pnpm package:opera
+```
+
+### Firefox
+
+```shell
+pnpm package:firefox
+```
+
+## Shorthands
+
+### Chrome/Edge
+
+```shell
+pnpm build:package
+```
+
+### Opera
+
+```shell
+pnpm build:package:opera
+```
+
+### Firefox
+
+```shell
+pnpm build:package:firefox
 ```
 
 ## Contribution
 
 Feel free to contribute! Keep in mind that the license I chose
 is [GPL v3](https://github.com/avi12/youtube-auto-hd/blob/main/LICENSE).  
-If you want to fork, make sure to credit [avi12](https://avi12.com) and link to this repository.
+If you want to fork, make sure to credit [Avi](https://avi12.com) and link to this repository.

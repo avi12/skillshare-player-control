@@ -1,19 +1,16 @@
 import eslint from "@eslint/js";
 import avi12 from "eslint-config-avi12";
-import svelteEslint from "eslint-plugin-svelte";
 import globals from "globals";
-import svelteParser from "svelte-eslint-parser";
 import tsEslint from "typescript-eslint";
 
 export default [
   eslint.configs.recommended,
   ...tsEslint.configs.recommended,
-  ...svelteEslint.configs["flat/recommended"],
   ...avi12,
   {
-    files: ["**/*.svelte"],
+    files: ["**/*.ts"],
     languageOptions: {
-      parser: svelteParser,
+      parser: tsEslint.parser,
       parserOptions: {
         parser: tsEslint.parser
       },
@@ -22,12 +19,6 @@ export default [
         ...globals.node,
         chrome: true
       }
-    }
-  },
-  {
-    files: ["**/*.ts"],
-    languageOptions: {
-      parser: tsEslint.parser
     }
   }
 ];
