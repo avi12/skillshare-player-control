@@ -4,7 +4,7 @@ Adds basic keyboard controls to the Skillshare player:
 
 |                             Key | Description                       |
 |--------------------------------:|-----------------------------------|
-|                 Left/Right keys | Backward/Forward 5 seconds        |
+|               Left / Right keys | Backward/Forward 5 seconds        |
 |  <kbd>J</kbd>/<kbd>K</kbd> keys | Backward/Forward 10 seconds       |
 |                    Up/Down keys | Volume up/down                    |
 |                <kbd>Space</kbd> | Pause/Play                        |
@@ -131,6 +131,5 @@ pnpm build:package:firefox
 
 ## Contribution
 
-Feel free to contribute! Keep in mind that the license I chose
-is [GPL v3](https://github.com/avi12/youtube-auto-hd/blob/main/LICENSE).  
-If you want to fork, make sure to credit [Avi](https://avi12.com) and link to this repository.
+Feel free to contribute! Keep in mind that the license I chose is [GPL v3](https://github.com/avi12/skillshare-player-control/blob/main/LICENSE)  
+If you want to fork, make sure to credit [Avi](https://avi12.com) and link to this repository
