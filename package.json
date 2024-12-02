@@ -1,6 +1,6 @@
 {
   "name": "skillshare-player-control",
-  "version": "2.1.0",
+  "version": "2.1.8",
   "type": "module",
   "description": "Basic keyboard controls for the Skillshare player.",
   "author": "Avi <avi6106@gmail.com>",
