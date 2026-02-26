@@ -26,23 +26,23 @@
     "postinstall": "wxt prepare"
   },
   "devDependencies": {
-    "@eslint/js": "^9.16.0",
-    "@types/chrome": "^0.0.287",
-    "@typescript-eslint/eslint-plugin": "^8.17.0",
-    "@typescript-eslint/parser": "^8.17.0",
-    "autoprefixer": "^10.4.20",
-    "concurrently": "^9.1.0",
-    "dotenv": "^16.4.5",
-    "eslint": "^9.16.0",
+    "@eslint/js": "^10.0.1",
+    "@types/chrome": "^0.1.37",
+    "@typescript-eslint/eslint-plugin": "^8.56.1",
+    "@typescript-eslint/parser": "^8.56.1",
+    "autoprefixer": "^10.4.27",
+    "concurrently": "^9.2.1",
+    "dotenv": "^17.3.1",
+    "eslint": "^10.0.2",
     "eslint-config-avi12": "github:avi12/eslint-config-avi12",
-    "eslint-plugin-import": "^2.31.0",
-    "globals": "^15.13.0",
-    "postcss-nesting": "^13.0.1",
-    "prettier": "^3.4.1",
+    "eslint-plugin-import": "^2.32.0",
+    "globals": "^17.3.0",
+    "postcss-nesting": "^14.0.0",
+    "prettier": "^3.8.1",
     "tslib": "^2.8.1",
-    "typescript": "^5.7.2",
-    "typescript-eslint": "^8.17.0",
-    "wxt": "^0.19.17"
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.56.1",
+    "wxt": "^0.20.18"
   },
-  "packageManager": "pnpm@9.14.4"
+  "packageManager": "pnpm@10.30.3"
 }
