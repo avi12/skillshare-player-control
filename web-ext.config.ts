@@ -1,5 +1,5 @@
 import dotenv from "dotenv";
-import { defineRunnerConfig } from "wxt";
+import { defineWebExtConfig } from "wxt";
 
 const path = (() => {
   const osMap: Partial<Record<NodeJS.Platform, string>> = {
@@ -17,7 +17,7 @@ const env = dotenv.configDotenv({ path }).parsed as {
 
 const { VITE_LANG = "en" } = process.env;
 
-export default defineRunnerConfig({
+export default defineWebExtConfig({
   binaries: {
     edge: env.VITE_PATH_EDGE,
     opera: env.VITE_PATH_OPERA.replace("USERPROFILE", process.env.HOME!)
