@@ -1,6 +1,6 @@
 {
   "name": "skillshare-player-control",
-  "version": "2.1.24",
+  "version": "2.1.26",
   "type": "module",
   "description": "Basic keyboard controls for the Skillshare player.",
   "author": "Avi <avi6106@gmail.com>",
@@ -9,7 +9,7 @@
   "homepage": "https://github.com/avi12/skillshare-player-control",
   "scripts": {
     "dev": "wxt",
-    "dev:rtl": "set VITE_LANG=he && wxt",
+    "dev:rtl": "pnpx cross-env VITE_LANG=he wxt",
     "dev:firefox": "pnpm dev -b firefox --mv3",
     "dev:edge": "pnpm dev -b edge",
     "dev:opera": "pnpm dev -b opera",
